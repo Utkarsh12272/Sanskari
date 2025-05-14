@@ -1,32 +1,4 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Cool Static Site</title>
-  <style>
-    body {
-      font-family: monospace;
-      background-color: #111;
-      color: #0f0;
-      text-align: center;
-      padding-top: 50px;
-    }
-    h1 {
-      font-size: 3em;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { color: #0f0; }
-      50% { color: #0ff; }
-      100% { color: #0f0; }
-    }
-  </style>
-</head>
-<body>
-  <h1>Welcome to My Terminal Web</h1>
-  <p>No JavaScript. No trackers. Just vibes.</p>
-</body>
-</html><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,23 +6,23 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 50px 0 0;
       background-color: #000;
       color: #33ff33;
       font-family: 'Courier New', Courier, monospace;
       font-size: 16px;
       line-height: 1.5;
-      overflow: hidden;
+      text-align: center;
     }
 
     .terminal {
-      padding: 40px;
       max-width: 800px;
       margin: auto;
+      padding: 0 20px;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       animation: glow 1.5s ease-in-out infinite alternate;
     }
 
@@ -84,6 +56,7 @@
       padding: 20px;
       margin-top: 30px;
       background-color: rgba(0, 255, 0, 0.05);
+      text-align: left;
     }
 
     a {
@@ -94,12 +67,29 @@
     a:hover {
       text-decoration: underline;
     }
+
+    .fullscreen-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #000;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      font-family: monospace;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .fullscreen-btn:hover {
+      background-color: #003300;
+    }
   </style>
 </head>
 <body>
-  <div class="terminal">
-    <h1>~ Welcome to Terminal Web ~</h1>
-    <p>> This is a cool static website with no JavaScript and only pure CSS + HTML.</p>
+  <div class="terminal" id="terminal">
+    <h1>Welcome to My Terminal Web</h1>
+    <p>> No JavaScript. No trackers. Just vibes.</p>
+
+    <button class="fullscreen-btn" onclick="goFullscreen()">[ Enter Fullscreen ]</button>
 
     <div class="box">
       <pre>
@@ -107,5 +97,20 @@ System Status: ONLINE
 User: Guest
 Last Login: <span class="blink">[accessing...]</span>
       </pre>
+    </div>
+  </div>
+
+  <script>
+    function goFullscreen() {
+      const element = document.documentElement;
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.webkitRequestFullscreen) { // Safari
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) { // IE11
+        element.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
